@@ -1,0 +1,1854 @@
+<!doctype html>
+<html lang="fa" dir="rtl" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امیرعلی بافتی - توسعه‌دهنده پایتون و متخصص امنیت سایبری</title>
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="/_sdk/data_sdk.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+        
+        .matrix-text {
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+        }
+        
+        .glow-button {
+            box-shadow: 0 0 20px currentColor;
+            transition: all 0.3s ease;
+        }
+        
+        .glow-button:hover {
+            box-shadow: 0 0 30px currentColor, 0 0 50px currentColor;
+            transform: translateY(-2px);
+        }
+        
+        .card-glow {
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-glow:hover {
+            box-shadow: 0 8px 40px rgba(0, 255, 255, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .theme-popup {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+        
+        .theme-option {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .theme-option:hover {
+            transform: scale(1.05);
+            border-color: white;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            border-right: 4px solid;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-fill {
+            height: 100%;
+            transition: width 1s ease;
+            box-shadow: 0 0 10px currentColor;
+        }
+    </style>
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+    </style>
+</head>
+
+<body class="h-full">
+    <canvas id="matrixCanvas" class="matrix-bg"></canvas>
+    <div id="mainContainer" class="w-full h-full overflow-auto">
+        <!-- Navigation -->
+        <nav id="navbar" class="sticky top-0 z-50 backdrop-blur-md border-b" style="background: rgba(0, 20, 40, 0.9);">
+            <div class="container-main mx-auto px-6 py-4">
+                <div class="flex justify-between items-center">
+                    <h1 id="navTitle" class="text-2xl font-bold matrix-text">امیرعلی بافتی</h1>
+                    <div class="flex gap-4 items-center"><button id="themeBtn" class="px-4 py-2 rounded-lg font-semibold glow-button">🎨 تغییر تم</button> <button id="loginBtn" class="px-4 py-2 rounded-lg font-semibold glow-button">ورود</button>
+                    </div>
+                </div>
+                <div id="navLinks" class="flex gap-6 mt-4 flex-wrap"><a href="#home" class="hover:opacity-80 transition">خانه</a> <a href="#skills" class="hover:opacity-80 transition">مهارت‌ها</a> <a href="#python-uses" class="hover:opacity-80 transition">کاربرد پایتون</a> <a href="#hacking-codes" class="hover:opacity-80 transition">کدهای هکینگ</a>                    <a href="#ai-tool" class="hover:opacity-80 transition">ابزار هوش مصنوعی</a> <a href="#course" class="hover:opacity-80 transition">خرید دوره</a> <a href="#contact" class="hover:opacity-80 transition">تماس</a>
+                </div>
+            </div>
+        </nav>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center px-6">
+            <div class="text-center fade-in">
+                <div class="text-8xl mb-6">
+                    👨‍💻
+                </div>
+                <h2 id="heroTitle" class="text-6xl font-bold mb-4 matrix-text">امیرعلی بافتی</h2>
+                <p id="heroSubtitle" class="text-2xl mb-8 opacity-80">توسعه‌دهنده پایتون و متخصص امنیت سایبری</p>
+                <div class="flex gap-4 justify-center flex-wrap"><a href="#course" class="px-8 py-4 rounded-lg font-bold text-lg glow-button">🎓 مشاهده دوره‌ها</a> <a href="#contact" class="px-8 py-4 rounded-lg font-bold text-lg glow-button">📧 تماس با من</a>
+                </div>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section id="skills" class="min-h-screen py-20 px-6">
+            <div class="container-main mx-auto max-w-6xl">
+                <h2 class="text-5xl font-bold text-center mb-16 matrix-text">⚡ مهارت‌ها و تخصص‌ها</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card-glow p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-6">💻 زبان‌های برنامه‌نویسی</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2"><span>Python</span> <span>95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2"><span>JavaScript</span> <span>85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2"><span>C/C++</span> <span>80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2"><span>Bash/Shell</span> <span>90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-glow p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-6">🔐 امنیت سایبری</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2"><span>Penetration Testing</span> <span>92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 92%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2"><span>Network Security</span> <span>88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2"><span>Web Application Security</span> <span>90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2"><span>Cryptography</span> <span>85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-glow p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-6">🛠️ ابزارها و تکنولوژی‌ها</h3>
+                        <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-lg font-semibold">Kali Linux</span> <span class="px-4 py-2 rounded-lg font-semibold">Metasploit</span> <span class="px-4 py-2 rounded-lg font-semibold">Burp Suite</span> <span class="px-4 py-2 rounded-lg font-semibold">Wireshark</span>                            <span class="px-4 py-2 rounded-lg font-semibold">Nmap</span> <span class="px-4 py-2 rounded-lg font-semibold">Docker</span> <span class="px-4 py-2 rounded-lg font-semibold">Git</span> <span class="px-4 py-2 rounded-lg font-semibold">Linux</span>
+                        </div>
+                    </div>
+                    <div class="card-glow p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-6">🎯 تخصص‌های ویژه</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3"><span class="text-2xl">🎯</span> <span>تست نفوذ و ارزیابی امنیت</span></li>
+                            <li class="flex items-start gap-3"><span class="text-2xl">🤖</span> <span>اتوماسیون با پایتون</span></li>
+                            <li class="flex items-start gap-3"><span class="text-2xl">🌐</span> <span>تحلیل شبکه و ترافیک</span></li>
+                            <li class="flex items-start gap-3"><span class="text-2xl">🔍</span> <span>بررسی آسیب‌پذیری‌های وب</span></li>
+                            <li class="flex items-start gap-3"><span class="text-2xl">📊</span> <span>تحلیل داده و Data Science</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Python Uses Section -->
+        <section id="python-uses" class="min-h-screen py-20 px-6">
+            <div class="container-main mx-auto max-w-6xl">
+                <h2 class="text-5xl font-bold text-center mb-16 matrix-text">🐍 کاربردهای پایتون</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card-glow p-6 rounded-xl">
+                        <div class="text-4xl mb-4">
+                            🌐
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">توسعه وب</h3>
+                        <p class="opacity-80">ساخت وب‌سایت و API با Django, Flask, FastAPI</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl">
+                        <div class="text-4xl mb-4">
+                            🤖
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">هوش مصنوعی</h3>
+                        <p class="opacity-80">Machine Learning و Deep Learning با TensorFlow و PyTorch</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl">
+                        <div class="text-4xl mb-4">
+                            📊
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">تحلیل داده</h3>
+                        <p class="opacity-80">پردازش و تحلیل داده با Pandas, NumPy, Matplotlib</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl">
+                        <div class="text-4xl mb-4">
+                            🔐
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">امنیت سایبری</h3>
+                        <p class="opacity-80">ساخت ابزار امنیتی و تست نفوذ</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl">
+                        <div class="text-4xl mb-4">
+                            ⚡
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">اتوماسیون</h3>
+                        <p class="opacity-80">خودکارسازی وظایف با اسکریپت‌های پایتون</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl">
+                        <div class="text-4xl mb-4">
+                            🎮
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">توسعه بازی</h3>
+                        <p class="opacity-80">ساخت بازی با Pygame و Panda3D</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl">
+                        <div class="text-4xl mb-4">
+                            📱
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">برنامه موبایل</h3>
+                        <p class="opacity-80">توسعه اپلیکیشن با Kivy و BeeWare</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl">
+                        <div class="text-4xl mb-4">
+                            ☁️
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Cloud Computing</h3>
+                        <p class="opacity-80">کار با AWS, Azure, Google Cloud</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl">
+                        <div class="text-4xl mb-4">
+                            🌍
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Web Scraping</h3>
+                        <p class="opacity-80">استخراج داده از وب با BeautifulSoup و Scrapy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Hacking Codes Section -->
+        <section id="hacking-codes" class="min-h-screen py-20 px-6">
+            <div class="container-main mx-auto max-w-6xl">
+                <h2 class="text-5xl font-bold text-center mb-16 matrix-text">💻 50 کد کاربردی پایتون در هکینگ</h2>
+                <div class="space-y-4 max-h-[600px] overflow-y-auto p-4 rounded-xl" style="background: rgba(0, 0, 0, 0.3);">
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣ Port Scanner
+                        </div><code>import socket<br>
+        socket.connect((host, port))</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣ Password Cracker
+                        </div><code>import hashlib<br>
+        hashlib.md5(password.encode())</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣ Network Sniffer
+                        </div><code>from scapy.all import sniff<br>
+        sniff(filter="tcp")</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣ SQL Injection Tester
+                        </div><code>payload = "' OR '1'='1"<br>
+        requests.post(url, data=payload)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            5️⃣ XSS Scanner
+                        </div><code>payload = "&lt;script&gt;alert('XSS')&lt;/script&gt;"</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            6️⃣ MAC Address Changer
+                        </div><code>os.system(f"ifconfig {interface} hw ether {mac}")</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            7️⃣ ARP Spoofer
+                        </div><code>from scapy.all import ARP, send<br>
+        send(ARP(op=2, pdst=target_ip))</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            8️⃣ DNS Spoofer
+                        </div><code>packet[DNS].an = DNSRR(rrname=qname)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            9️⃣ Keylogger
+                        </div><code>from pynput.keyboard import Listener<br>
+        Listener(on_press=on_press)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            🔟 Packet Sniffer
+                        </div><code>sniff(iface=interface, prn=process_packet)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣1️⃣ Vulnerability Scanner
+                        </div><code>nmap.PortScanner().scan(host, ports)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣2️⃣ Subdomain Finder
+                        </div><code>socket.gethostbyname(subdomain)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣3️⃣ Directory Bruteforcer
+                        </div><code>requests.get(f"{url}/{directory}")</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣4️⃣ WiFi Password Cracker
+                        </div><code>pywifi.PyWiFi().interfaces()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣5️⃣ Email Harvester
+                        </div><code>re.findall(email_pattern, webpage)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣6️⃣ SSH Bruteforcer
+                        </div><code>paramiko.SSHClient().connect(host, username, password)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣7️⃣ FTP Bruteforcer
+                        </div><code>ftplib.FTP().login(username, password)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣8️⃣ HTTP Header Analyzer
+                        </div><code>requests.head(url).headers</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            1️⃣9️⃣ Cookie Stealer
+                        </div><code>requests.get(url).cookies</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣0️⃣ Session Hijacker
+                        </div><code>requests.Session().cookies.set()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣1️⃣ IP Tracker
+                        </div><code>requests.get(f"http://ip-api.com/json/{ip}")</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣2️⃣ WHOIS Lookup
+                        </div><code>import whois<br>
+        whois.whois(domain)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣3️⃣ Reverse IP Lookup
+                        </div><code>socket.gethostbyaddr(ip)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣4️⃣ Banner Grabber
+                        </div><code>socket.recv(1024)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣5️⃣ OS Fingerprinting
+                        </div><code>nmap.scan(host, arguments='-O')</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣6️⃣ Firewall Detector
+                        </div><code>send(IP(dst=target)/TCP(flags="S"))</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣7️⃣ Proxy Checker
+                        </div><code>requests.get(url, proxies=proxy)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣8️⃣ Anonymous Browser
+                        </div><code>selenium.webdriver.Chrome(options=options)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            2️⃣9️⃣ Metadata Extractor
+                        </div><code>from PIL import Image<br>
+        Image.open().getexif()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣0️⃣ File Encryptor
+                        </div><code>from cryptography.fernet import Fernet</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣1️⃣ File Decryptor
+                        </div><code>Fernet(key).decrypt(encrypted_data)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣2️⃣ Hash Generator
+                        </div><code>hashlib.sha256(data.encode()).hexdigest()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣3️⃣ Hash Cracker
+                        </div><code>rainbow_table[hash_value]</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣4️⃣ Steganography Tool
+                        </div><code>from stegano import lsb<br>
+        lsb.hide(image, message)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣5️⃣ QR Code Generator
+                        </div><code>import qrcode<br>
+        qrcode.make(data)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣6️⃣ QR Code Scanner
+                        </div><code>from pyzbar.pyzbar import decode</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣7️⃣ Malware Analyzer
+                        </div><code>pefile.PE(filename).sections</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣8️⃣ Ransomware Simulator
+                        </div><code>encrypt_file() # آموزشی</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            3️⃣9️⃣ Backdoor Creator
+                        </div><code>socket.bind(('0.0.0.0', port))</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣0️⃣ Reverse Shell
+                        </div><code>subprocess.Popen(cmd, shell=True)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣1️⃣ DDoS Simulator
+                        </div><code>threading.Thread(target=attack).start()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣2️⃣ Botnet Controller
+                        </div><code>asyncio.create_task(handle_bot())</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣3️⃣ Trojan Horse
+                        </div><code>hidden_payload() + legitimate_app()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣4️⃣ Rootkit Detector
+                        </div><code>os.listdir('/proc')</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣5️⃣ Log Cleaner
+                        </div><code>os.remove('/var/log/auth.log')</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣6️⃣ Forensics Tool
+                        </div><code>pytsk3.Img_Info(image_path)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣7️⃣ Memory Dumper
+                        </div><code>volatility.plugins.pslist.PSList()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣8️⃣ Traffic Analyzer
+                        </div><code>pyshark.FileCapture(pcap_file)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            4️⃣9️⃣ IDS/IPS System
+                        </div><code>if detect_anomaly(packet): block()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="font-bold mb-2">
+                            5️⃣0️⃣ Honeypot
+                        </div><code>fake_service.listen(port)</code>
+                    </div>
+                </div>
+                <div class="mt-6 p-6 rounded-xl card-glow">
+                    <p class="text-center font-bold">⚠️ توجه: این کدها صرفاً برای اهداف آموزشی و تست امنیت سیستم‌های خودتان است. استفاده غیرقانونی ممنوع!</p>
+                </div>
+            </div>
+        </section>
+        <!-- AI Tool Section -->
+        <section id="ai-tool" class="min-h-screen py-20 px-6">
+            <div class="container-main mx-auto max-w-4xl">
+                <h2 class="text-5xl font-bold text-center mb-16 matrix-text">🤖 ابزار هوش مصنوعی</h2>
+                <div class="card-glow p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-center">تولید کد پایتون هوشمند</h3>
+                    <div class="mb-6"><label class="block mb-2 font-semibold">توضیحات: چه کدی می‌خواهید؟</label> <textarea id="aiInput" rows="4" class="w-full p-4 rounded-lg" style="background: rgba(0, 0, 0, 0.5); border: 2px solid;" placeholder="مثال: یک اسکریپت برای اسکن پورت‌های باز..."></textarea>
+                    </div><button id="generateBtn" class="w-full py-4 rounded-lg font-bold text-lg glow-button mb-6">✨ تولید کد</button>
+                    <div id="aiOutput" class="hidden"><label class="block mb-2 font-semibold">کد تولید شده:</label>
+                        <div class="code-block" style="max-height: 400px; overflow-y: auto;">
+                            <pre id="generatedCode" style="white-space: pre-wrap; word-wrap: break-word;"></pre>
+                        </div><button id="copyCodeBtn" class="mt-4 px-6 py-3 rounded-lg font-semibold glow-button">📋 کپی کد</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Course Section -->
+        <section id="course" class="min-h-screen py-20 px-6">
+            <div class="container-main mx-auto max-w-5xl">
+                <h2 class="text-5xl font-bold text-center mb-16 matrix-text">🎓 دوره‌های آموزشی</h2>
+                <div class="card-glow p-8 rounded-xl">
+                    <div class="text-center mb-8">
+                        <div class="text-6xl mb-4">
+                            🚀
+                        </div>
+                        <h3 id="courseTitle" class="text-3xl font-bold mb-4">دوره جامع پایتون و امنیت سایبری</h3>
+                        <p class="text-xl opacity-80 mb-6">از صفر تا صد با پروژه‌های عملی</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="p-6 rounded-lg" style="background: rgba(0, 0, 0, 0.3);">
+                            <h4 class="font-bold text-xl mb-4">📚 محتوای دوره</h4>
+                            <ul class="space-y-2">
+                                <li>✅ آموزش کامل زبان پایتون</li>
+                                <li>✅ مبانی امنیت سایبری</li>
+                                <li>✅ تست نفوذ عملی</li>
+                                <li>✅ 50+ پروژه کاربردی</li>
+                                <li>✅ ابزارهای حرفه‌ای هکینگ</li>
+                                <li>✅ گواهینامه معتبر</li>
+                            </ul>
+                        </div>
+                        <div class="p-6 rounded-lg" style="background: rgba(0, 0, 0, 0.3);">
+                            <h4 class="font-bold text-xl mb-4">🎯 مناسب برای</h4>
+                            <ul class="space-y-2">
+                                <li>👨‍💻 برنامه‌نویسان</li>
+                                <li>🔐 علاقه‌مندان امنیت</li>
+                                <li>🎓 دانشجویان</li>
+                                <li>💼 متخصصان IT</li>
+                                <li>🚀 کسب‌وکارها</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center p-8 rounded-xl mb-6" style="background: rgba(0, 255, 255, 0.1);">
+                        <div class="text-sm mb-2 opacity-70">
+                            قیمت ویژه
+                        </div>
+                        <div id="coursePrice" class="text-5xl font-bold mb-2">
+                            2,500,000 تومان
+                        </div>
+                        <div class="text-sm opacity-70">
+                            یک‌بار پرداخت - دسترسی مادام‌العمر
+                        </div>
+                    </div><button id="buyCourseBtn" class="w-full py-6 rounded-lg font-bold text-2xl glow-button">🛒 خرید و ثبت‌نام دوره</button>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="min-h-screen py-20 px-6">
+            <div class="container-main mx-auto max-w-5xl">
+                <h2 class="text-5xl font-bold text-center mb-16 matrix-text">📞 راه‌های ارتباطی</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="#" class="card-glow p-6 rounded-xl text-center hover:scale-105 transition">
+                        <div class="text-5xl mb-4">
+                            📧
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">ایمیل</h3>
+                        <p id="contactEmail" class="opacity-80">amiralibafti@example.com</p>
+                    </a>
+                    <a href="#" class="card-glow p-6 rounded-xl text-center hover:scale-105 transition">
+                        <div class="text-5xl mb-4">
+                            📱
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">تلفن</h3>
+                        <p id="contactPhone" class="opacity-80">+98 912 345 6789</p>
+                    </a>
+                    <a href="#" class="card-glow p-6 rounded-xl text-center hover:scale-105 transition">
+                        <div class="text-5xl mb-4">
+                            💬
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">تلگرام</h3>
+                        <p id="contactTelegram" class="opacity-80">@amiralibafti</p>
+                    </a>
+                    <a href="#" class="card-glow p-6 rounded-xl text-center hover:scale-105 transition">
+                        <div class="text-5xl mb-4">
+                            💼
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">لینکدین</h3>
+                        <p class="opacity-80">Amir Ali Bafti</p>
+                    </a>
+                    <a href="#" class="card-glow p-6 rounded-xl text-center hover:scale-105 transition">
+                        <div class="text-5xl mb-4">
+                            🐙
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">گیت‌هاب</h3>
+                        <p class="opacity-80">github.com/amiralibafti</p>
+                    </a>
+                    <a href="#" class="card-glow p-6 rounded-xl text-center hover:scale-105 transition">
+                        <div class="text-5xl mb-4">
+                            🌐
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">وبسایت</h3>
+                        <p class="opacity-80">amiralibafti.dev</p>
+                    </a>
+                    <a href="#" class="card-glow p-6 rounded-xl text-center hover:scale-105 transition">
+                        <div class="text-5xl mb-4">
+                            📺
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">یوتیوب</h3>
+                        <p class="opacity-80">Amir Ali Bafti</p>
+                    </a>
+                    <a href="#" class="card-glow p-6 rounded-xl text-center hover:scale-105 transition">
+                        <div class="text-5xl mb-4">
+                            🐦
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">توییتر</h3>
+                        <p class="opacity-80">@amiralibafti</p>
+                    </a>
+                    <a href="#" class="card-glow p-6 rounded-xl text-center hover:scale-105 transition">
+                        <div class="text-5xl mb-4">
+                            📷
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">اینستاگرام</h3>
+                        <p class="opacity-80">@amiralibafti</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Login/Register Modal -->
+        <div id="authModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4" style="background: rgba(0, 0, 0, 0.9);">
+            <div class="w-full max-w-md card-glow p-8 rounded-xl relative"><button id="closeAuthModal" class="absolute top-4 left-4 text-3xl hover:opacity-70">✕</button>
+                <h2 class="text-3xl font-bold text-center mb-8 matrix-text">🔐 ورود / ثبت‌نام</h2>
+                <form id="authForm" class="space-y-4">
+                    <div><label class="block mb-2 font-semibold">📧 ایمیل</label> <input type="email" id="emailInput" required class="w-full p-3 rounded-lg" style="background: rgba(0, 0, 0, 0.5); border: 2px solid;" placeholder="example@email.com">
+                    </div>
+                    <div><label class="block mb-2 font-semibold">📱 شماره تلفن</label> <input type="tel" id="phoneInput" required class="w-full p-3 rounded-lg" style="background: rgba(0, 0, 0, 0.5); border: 2px solid;" placeholder="09123456789">
+                    </div>
+                    <div><label class="block mb-2 font-semibold">👤 نام کاربری</label> <input type="text" id="usernameInput" required class="w-full p-3 rounded-lg" style="background: rgba(0, 0, 0, 0.5); border: 2px solid;" placeholder="username">
+                    </div>
+                    <div><label class="block mb-2 font-semibold">🔒 رمز عبور</label> <input type="password" id="passwordInput" required class="w-full p-3 rounded-lg" style="background: rgba(0, 0, 0, 0.5); border: 2px solid;" placeholder="••••••••">
+                    </div><button type="submit" id="submitAuthBtn" class="w-full py-4 rounded-lg font-bold text-lg glow-button">✅ ثبت‌نام / ورود</button>
+                </form>
+                <div id="authMessage" class="hidden mt-4 p-4 rounded-lg text-center font-semibold"></div>
+            </div>
+        </div>
+        <!-- Theme Selector Modal -->
+        <div id="themeModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4" style="background: rgba(0, 0, 0, 0.9);">
+            <div class="w-full max-w-4xl card-glow p-8 rounded-xl relative theme-popup"><button id="closeThemeModal" class="absolute top-4 left-4 text-3xl hover:opacity-70 z-10">✕</button>
+                <h2 class="text-3xl font-bold text-center mb-8 matrix-text">🎨 انتخاب تم</h2>
+                <div class="theme-grid" id="themeGrid"></div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="py-8 text-center border-t" style="background: rgba(0, 20, 40, 0.9);">
+            <p class="opacity-70">© 2024 امیرعلی بافتی | تمامی حقوق محفوظ است</p>
+            <p class="opacity-50 mt-2">ساخته شده با ❤️ و پایتون</p>
+        </footer>
+    </div>
+    <script>
+        // SDK Configuration
+        const defaultConfig = {
+            background_color: "#001428",
+            surface_color: "#00FFE5",
+            text_color: "#FFFFFF",
+            primary_action_color: "#00FFE5",
+            secondary_action_color: "#0099CC",
+            font_family: "Vazirmatn",
+            font_size: 16,
+            site_title: "امیرعلی بافتی",
+            hero_subtitle: "توسعه‌دهنده پایتون و متخصص امنیت سایبری",
+            email_address: "amiralibafti@example.com",
+            phone_number: "+98 912 345 6789",
+            telegram_id: "@amiralibafti",
+            course_title: "دوره جامع پایتون و امنیت سایبری",
+            course_price: "2,500,000 تومان"
+        };
+
+        let config = {...defaultConfig
+        };
+        let currentRecordCount = 0;
+
+        // Theme definitions (100+ themes)
+        const themes = [{
+            name: "Matrix Blue",
+            bg: "#001428",
+            surface: "#00FFE5",
+            text: "#FFFFFF",
+            primary: "#00FFE5",
+            secondary: "#0099CC"
+        }, {
+            name: "Matrix Green",
+            bg: "#0D0208",
+            surface: "#00FF41",
+            text: "#FFFFFF",
+            primary: "#00FF41",
+            secondary: "#008F11"
+        }, {
+            name: "Cyberpunk Pink",
+            bg: "#1A0B2E",
+            surface: "#FF006E",
+            text: "#FFFFFF",
+            primary: "#FF006E",
+            secondary: "#8338EC"
+        }, {
+            name: "Neon Purple",
+            bg: "#120458",
+            surface: "#9D4EDD",
+            text: "#FFFFFF",
+            primary: "#9D4EDD",
+            secondary: "#C77DFF"
+        }, {
+            name: "Dark Red",
+            bg: "#1C0A00",
+            surface: "#FF0000",
+            text: "#FFFFFF",
+            primary: "#FF0000",
+            secondary: "#990000"
+        }, {
+            name: "Ocean Deep",
+            bg: "#001F3F",
+            surface: "#00D9FF",
+            text: "#FFFFFF",
+            primary: "#00D9FF",
+            secondary: "#0074D9"
+        }, {
+            name: "Toxic Green",
+            bg: "#0F2027",
+            surface: "#39FF14",
+            text: "#000000",
+            primary: "#39FF14",
+            secondary: "#2ECC71"
+        }, {
+            name: "Blood Orange",
+            bg: "#2C0703",
+            surface: "#FF4500",
+            text: "#FFFFFF",
+            primary: "#FF4500",
+            secondary: "#CC3700"
+        }, {
+            name: "Electric Blue",
+            bg: "#000D1A",
+            surface: "#0096FF",
+            text: "#FFFFFF",
+            primary: "#0096FF",
+            secondary: "#0066CC"
+        }, {
+            name: "Lime Shock",
+            bg: "#0A1F0A",
+            surface: "#CCFF00",
+            text: "#000000",
+            primary: "#CCFF00",
+            secondary: "#99CC00"
+        }, {
+            name: "Magenta Dream",
+            bg: "#1A001A",
+            surface: "#FF00FF",
+            text: "#FFFFFF",
+            primary: "#FF00FF",
+            secondary: "#CC00CC"
+        }, {
+            name: "Amber Glow",
+            bg: "#1F1000",
+            surface: "#FFBF00",
+            text: "#000000",
+            primary: "#FFBF00",
+            secondary: "#CC9900"
+        }, {
+            name: "Ice Blue",
+            bg: "#0A1A2E",
+            surface: "#89CFF0",
+            text: "#000000",
+            primary: "#89CFF0",
+            secondary: "#5FA8D3"
+        }, {
+            name: "Violet Night",
+            bg: "#1C0033",
+            surface: "#8B00FF",
+            text: "#FFFFFF",
+            primary: "#8B00FF",
+            secondary: "#6600CC"
+        }, {
+            name: "Sunset Red",
+            bg: "#2E0F0F",
+            surface: "#FF4444",
+            text: "#FFFFFF",
+            primary: "#FF4444",
+            secondary: "#CC3333"
+        }, {
+            name: "Forest Green",
+            bg: "#0B1F0B",
+            surface: "#228B22",
+            text: "#FFFFFF",
+            primary: "#228B22",
+            secondary: "#1B6F1B"
+        }, {
+            name: "Royal Gold",
+            bg: "#1F1500",
+            surface: "#FFD700",
+            text: "#000000",
+            primary: "#FFD700",
+            secondary: "#CCAC00"
+        }, {
+            name: "Midnight Blue",
+            bg: "#00061A",
+            surface: "#191970",
+            text: "#FFFFFF",
+            primary: "#191970",
+            secondary: "#14145A"
+        }, {
+            name: "Hot Pink",
+            bg: "#2E0022",
+            surface: "#FF69B4",
+            text: "#FFFFFF",
+            primary: "#FF69B4",
+            secondary: "#FF1493"
+        }, {
+            name: "Turquoise",
+            bg: "#001F1F",
+            surface: "#40E0D0",
+            text: "#000000",
+            primary: "#40E0D0",
+            secondary: "#30B0C0"
+        }, {
+            name: "Dark Violet",
+            bg: "#1A0033",
+            surface: "#9400D3",
+            text: "#FFFFFF",
+            primary: "#9400D3",
+            secondary: "#7300A6"
+        }, {
+            name: "Crimson",
+            bg: "#1F0000",
+            surface: "#DC143C",
+            text: "#FFFFFF",
+            primary: "#DC143C",
+            secondary: "#B01030"
+        }, {
+            name: "Aqua Marine",
+            bg: "#001F1A",
+            surface: "#7FFFD4",
+            text: "#000000",
+            primary: "#7FFFD4",
+            secondary: "#66CCAA"
+        }, {
+            name: "Indigo",
+            bg: "#0D001F",
+            surface: "#4B0082",
+            text: "#FFFFFF",
+            primary: "#4B0082",
+            secondary: "#3B0066"
+        }, {
+            name: "Coral",
+            bg: "#2E1510",
+            surface: "#FF7F50",
+            text: "#FFFFFF",
+            primary: "#FF7F50",
+            secondary: "#CC6640"
+        }, {
+            name: "Teal",
+            bg: "#001A1A",
+            surface: "#008080",
+            text: "#FFFFFF",
+            primary: "#008080",
+            secondary: "#006666"
+        }, {
+            name: "Lavender",
+            bg: "#15001F",
+            surface: "#E6E6FA",
+            text: "#000000",
+            primary: "#E6E6FA",
+            secondary: "#B8B8C8"
+        }, {
+            name: "Maroon",
+            bg: "#1F0000",
+            surface: "#800000",
+            text: "#FFFFFF",
+            primary: "#800000",
+            secondary: "#660000"
+        }, {
+            name: "Mint",
+            bg: "#001F10",
+            surface: "#98FF98",
+            text: "#000000",
+            primary: "#98FF98",
+            secondary: "#7ACC7A"
+        }, {
+            name: "Navy",
+            bg: "#00001F",
+            surface: "#000080",
+            text: "#FFFFFF",
+            primary: "#000080",
+            secondary: "#000066"
+        }, {
+            name: "Olive",
+            bg: "#1F1F00",
+            surface: "#808000",
+            text: "#FFFFFF",
+            primary: "#808000",
+            secondary: "#666600"
+        }, {
+            name: "Peach",
+            bg: "#2E1510",
+            surface: "#FFDAB9",
+            text: "#000000",
+            primary: "#FFDAB9",
+            secondary: "#CCAE94"
+        }, {
+            name: "Plum",
+            bg: "#1F001F",
+            surface: "#DDA0DD",
+            text: "#000000",
+            primary: "#DDA0DD",
+            secondary: "#B080B0"
+        }, {
+            name: "Rose",
+            bg: "#2E0015",
+            surface: "#FF007F",
+            text: "#FFFFFF",
+            primary: "#FF007F",
+            secondary: "#CC0066"
+        }, {
+            name: "Sapphire",
+            bg: "#00001F",
+            surface: "#0F52BA",
+            text: "#FFFFFF",
+            primary: "#0F52BA",
+            secondary: "#0C4295"
+        }, {
+            name: "Scarlet",
+            bg: "#2E0000",
+            surface: "#FF2400",
+            text: "#FFFFFF",
+            primary: "#FF2400",
+            secondary: "#CC1D00"
+        }, {
+            name: "Silver",
+            bg: "#1A1A1A",
+            surface: "#C0C0C0",
+            text: "#000000",
+            primary: "#C0C0C0",
+            secondary: "#9A9A9A"
+        }, {
+            name: "Tangerine",
+            bg: "#2E1500",
+            surface: "#F28500",
+            text: "#FFFFFF",
+            primary: "#F28500",
+            secondary: "#C26A00"
+        }, {
+            name: "Vermillion",
+            bg: "#2E0F00",
+            surface: "#E34234",
+            text: "#FFFFFF",
+            primary: "#E34234",
+            secondary: "#B5352A"
+        }, {
+            name: "Wheat",
+            bg: "#1F1A10",
+            surface: "#F5DEB3",
+            text: "#000000",
+            primary: "#F5DEB3",
+            secondary: "#C4B28F"
+        }, {
+            name: "Chartreuse",
+            bg: "#0F1F00",
+            surface: "#7FFF00",
+            text: "#000000",
+            primary: "#7FFF00",
+            secondary: "#66CC00"
+        }, {
+            name: "Cobalt",
+            bg: "#00001A",
+            surface: "#0047AB",
+            text: "#FFFFFF",
+            primary: "#0047AB",
+            secondary: "#003989"
+        }, {
+            name: "Emerald",
+            bg: "#001F0F",
+            surface: "#50C878",
+            text: "#FFFFFF",
+            primary: "#50C878",
+            secondary: "#40A060"
+        }, {
+            name: "Fuchsia",
+            bg: "#1F001F",
+            surface: "#FF00FF",
+            text: "#FFFFFF",
+            primary: "#FF00FF",
+            secondary: "#CC00CC"
+        }, {
+            name: "Jade",
+            bg: "#001F10",
+            surface: "#00A86B",
+            text: "#FFFFFF",
+            primary: "#00A86B",
+            secondary: "#008656"
+        }, {
+            name: "Ruby",
+            bg: "#2E0010",
+            surface: "#E0115F",
+            text: "#FFFFFF",
+            primary: "#E0115F",
+            secondary: "#B30E4C"
+        }, {
+            name: "Topaz",
+            bg: "#1F1500",
+            surface: "#FFC87C",
+            text: "#000000",
+            primary: "#FFC87C",
+            secondary: "#CCA063"
+        }, {
+            name: "Burgundy",
+            bg: "#1F0010",
+            surface: "#800020",
+            text: "#FFFFFF",
+            primary: "#800020",
+            secondary: "#66001A"
+        }, {
+            name: "Copper",
+            bg: "#1F0F00",
+            surface: "#B87333",
+            text: "#FFFFFF",
+            primary: "#B87333",
+            secondary: "#935C29"
+        }, {
+            name: "Bronze",
+            bg: "#1F1000",
+            surface: "#CD7F32",
+            text: "#FFFFFF",
+            primary: "#CD7F32",
+            secondary: "#A46628"
+        }, {
+            name: "Pewter",
+            bg: "#151515",
+            surface: "#899499",
+            text: "#FFFFFF",
+            primary: "#899499",
+            secondary: "#6E767A"
+        }, {
+            name: "Ebony",
+            bg: "#0F0F0F",
+            surface: "#555D50",
+            text: "#FFFFFF",
+            primary: "#555D50",
+            secondary: "#444A40"
+        }, {
+            name: "Ivory",
+            bg: "#1F1F1A",
+            surface: "#FFFFF0",
+            text: "#000000",
+            primary: "#FFFFF0",
+            secondary: "#CCCCC0"
+        }, {
+            name: "Pearl",
+            bg: "#1A1A1A",
+            surface: "#EAE6CA",
+            text: "#000000",
+            primary: "#EAE6CA",
+            secondary: "#BBB8A2"
+        }, {
+            name: "Mahogany",
+            bg: "#1F0A00",
+            surface: "#C04000",
+            text: "#FFFFFF",
+            primary: "#C04000",
+            secondary: "#9A3300"
+        }, {
+            name: "Cerulean",
+            bg: "#00101F",
+            surface: "#007BA7",
+            text: "#FFFFFF",
+            primary: "#007BA7",
+            secondary: "#006286"
+        }, {
+            name: "Slate",
+            bg: "#101015",
+            surface: "#708090",
+            text: "#FFFFFF",
+            primary: "#708090",
+            secondary: "#5A6673"
+        }, {
+            name: "Rust",
+            bg: "#1F0A00",
+            surface: "#B7410E",
+            text: "#FFFFFF",
+            primary: "#B7410E",
+            secondary: "#92340B"
+        }, {
+            name: "Moss",
+            bg: "#0F1F0A",
+            surface: "#8A9A5B",
+            text: "#FFFFFF",
+            primary: "#8A9A5B",
+            secondary: "#6E7B49"
+        }, {
+            name: "Saffron",
+            bg: "#1F1000",
+            surface: "#F4C430",
+            text: "#000000",
+            primary: "#F4C430",
+            secondary: "#C39D26"
+        }, {
+            name: "Mustard",
+            bg: "#1F1500",
+            surface: "#FFDB58",
+            text: "#000000",
+            primary: "#FFDB58",
+            secondary: "#CCAF46"
+        }, {
+            name: "Lilac",
+            bg: "#15001A",
+            surface: "#C8A2C8",
+            text: "#000000",
+            primary: "#C8A2C8",
+            secondary: "#A082A0"
+        }, {
+            name: "Periwinkle",
+            bg: "#0A001F",
+            surface: "#CCCCFF",
+            text: "#000000",
+            primary: "#CCCCFF",
+            secondary: "#A3A3CC"
+        }, {
+            name: "Mauve",
+            bg: "#1A0015",
+            surface: "#E0B0FF",
+            text: "#000000",
+            primary: "#E0B0FF",
+            secondary: "#B38DCC"
+        }, {
+            name: "Salmon",
+            bg: "#2E1510",
+            surface: "#FA8072",
+            text: "#FFFFFF",
+            primary: "#FA8072",
+            secondary: "#C8665B"
+        }, {
+            name: "Khaki",
+            bg: "#1A1510",
+            surface: "#C3B091",
+            text: "#000000",
+            primary: "#C3B091",
+            secondary: "#9C8D74"
+        }, {
+            name: "Taupe",
+            bg: "#1A1510",
+            surface: "#483C32",
+            text: "#FFFFFF",
+            primary: "#483C32",
+            secondary: "#3A3028"
+        }, {
+            name: "Beige",
+            bg: "#1F1A15",
+            surface: "#F5F5DC",
+            text: "#000000",
+            primary: "#F5F5DC",
+            secondary: "#C4C4B0"
+        }, {
+            name: "Chocolate",
+            bg: "#1A0A00",
+            surface: "#D2691E",
+            text: "#FFFFFF",
+            primary: "#D2691E",
+            secondary: "#A85418"
+        }, {
+            name: "Sepia",
+            bg: "#1A1000",
+            surface: "#704214",
+            text: "#FFFFFF",
+            primary: "#704214",
+            secondary: "#593510"
+        }, {
+            name: "Umber",
+            bg: "#1A0F00",
+            surface: "#635147",
+            text: "#FFFFFF",
+            primary: "#635147",
+            secondary: "#4F4139"
+        }, {
+            name: "Sienna",
+            bg: "#1A0A00",
+            surface: "#A0522D",
+            text: "#FFFFFF",
+            primary: "#A0522D",
+            secondary: "#804224"
+        }, {
+            name: "Burnt Orange",
+            bg: "#2E0F00",
+            surface: "#CC5500",
+            text: "#FFFFFF",
+            primary: "#CC5500",
+            secondary: "#A34400"
+        }, {
+            name: "Brick",
+            bg: "#2E0A00",
+            surface: "#CB4154",
+            text: "#FFFFFF",
+            primary: "#CB4154",
+            secondary: "#A23443"
+        }, {
+            name: "Terra Cotta",
+            bg: "#2E1000",
+            surface: "#E2725B",
+            text: "#FFFFFF",
+            primary: "#E2725B",
+            secondary: "#B55B49"
+        }, {
+            name: "Sand",
+            bg: "#1F1A10",
+            surface: "#C2B280",
+            text: "#000000",
+            primary: "#C2B280",
+            secondary: "#9B8E66"
+        }, {
+            name: "Desert",
+            bg: "#1F1510",
+            surface: "#EDC9AF",
+            text: "#000000",
+            primary: "#EDC9AF",
+            secondary: "#BEA18C"
+        }, {
+            name: "Caramel",
+            bg: "#1F1000",
+            surface: "#FFD59A",
+            text: "#000000",
+            primary: "#FFD59A",
+            secondary: "#CCAA7B"
+        }, {
+            name: "Honey",
+            bg: "#1F1500",
+            surface: "#FFC30B",
+            text: "#000000",
+            primary: "#FFC30B",
+            secondary: "#CC9C09"
+        }, {
+            name: "Cream",
+            bg: "#1F1A15",
+            surface: "#FFFDD0",
+            text: "#000000",
+            primary: "#FFFDD0",
+            secondary: "#CCCAA6"
+        }, {
+            name: "Vanilla",
+            bg: "#1F1A10",
+            surface: "#F3E5AB",
+            text: "#000000",
+            primary: "#F3E5AB",
+            secondary: "#C2B789"
+        }, {
+            name: "Lemon",
+            bg: "#1F1F00",
+            surface: "#FFF44F",
+            text: "#000000",
+            primary: "#FFF44F",
+            secondary: "#CCC33F"
+        }, {
+            name: "Canary",
+            bg: "#1F1F00",
+            surface: "#FFFF99",
+            text: "#000000",
+            primary: "#FFFF99",
+            secondary: "#CCCC7A"
+        }, {
+            name: "Butter",
+            bg: "#1F1A00",
+            surface: "#FFFACD",
+            text: "#000000",
+            primary: "#FFFACD",
+            secondary: "#CCC8A4"
+        }, {
+            name: "Pistachio",
+            bg: "#0F1F0A",
+            surface: "#93C572",
+            text: "#000000",
+            primary: "#93C572",
+            secondary: "#759D5B"
+        }, {
+            name: "Seafoam",
+            bg: "#001F15",
+            surface: "#93E9BE",
+            text: "#000000",
+            primary: "#93E9BE",
+            secondary: "#75BA98"
+        }, {
+            name: "Sky",
+            bg: "#00101F",
+            surface: "#87CEEB",
+            text: "#000000",
+            primary: "#87CEEB",
+            secondary: "#6CA5BC"
+        }, {
+            name: "Powder Blue",
+            bg: "#001015",
+            surface: "#B0E0E6",
+            text: "#000000",
+            primary: "#B0E0E6",
+            secondary: "#8DB3B8"
+        }, {
+            name: "Baby Blue",
+            bg: "#00101A",
+            surface: "#89CFF0",
+            text: "#000000",
+            primary: "#89CFF0",
+            secondary: "#6EA6C0"
+        }, {
+            name: "Steel Blue",
+            bg: "#001015",
+            surface: "#4682B4",
+            text: "#FFFFFF",
+            primary: "#4682B4",
+            secondary: "#386890"
+        }, {
+            name: "Denim",
+            bg: "#000A1F",
+            surface: "#1560BD",
+            text: "#FFFFFF",
+            primary: "#1560BD",
+            secondary: "#114D97"
+        }, {
+            name: "Prussian",
+            bg: "#00001A",
+            surface: "#003153",
+            text: "#FFFFFF",
+            primary: "#003153",
+            secondary: "#002742"
+        }, {
+            name: "Azure",
+            bg: "#00101F",
+            surface: "#007FFF",
+            text: "#FFFFFF",
+            primary: "#007FFF",
+            secondary: "#0066CC"
+        }, {
+            name: "Cerulean Blue",
+            bg: "#00101A",
+            surface: "#2A52BE",
+            text: "#FFFFFF",
+            primary: "#2A52BE",
+            secondary: "#224298"
+        }, {
+            name: "Ultramarine",
+            bg: "#00001F",
+            surface: "#4166F5",
+            text: "#FFFFFF",
+            primary: "#4166F5",
+            secondary: "#3452C4"
+        }, {
+            name: "Blush",
+            bg: "#2E1015",
+            surface: "#DE5D83",
+            text: "#FFFFFF",
+            primary: "#DE5D83",
+            secondary: "#B24A69"
+        }];
+
+        // Matrix Animation
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = config.surface_color || defaultConfig.surface_color;
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Apply theme function
+        function applyTheme(theme) {
+            config.background_color = theme.bg;
+            config.surface_color = theme.surface;
+            config.text_color = theme.text;
+            config.primary_action_color = theme.primary;
+            config.secondary_action_color = theme.secondary;
+
+            if (window.elementSdk) {
+                window.elementSdk.setConfig({
+                    background_color: theme.bg,
+                    surface_color: theme.surface,
+                    text_color: theme.text,
+                    primary_action_color: theme.primary,
+                    secondary_action_color: theme.secondary
+                });
+            }
+        }
+
+        // Render theme grid
+        function renderThemeGrid() {
+            const grid = document.getElementById('themeGrid');
+            grid.innerHTML = '';
+
+            themes.forEach((theme, index) => {
+                const option = document.createElement('div');
+                option.className = 'theme-option';
+                option.style.background = `linear-gradient(135deg, ${theme.bg} 0%, ${theme.surface} 50%, ${theme.primary} 100%)`;
+                option.title = theme.name;
+                option.innerHTML = `<div style="padding: 10px; font-size: 12px; font-weight: bold; text-align: center; color: ${theme.text}; text-shadow: 0 0 5px rgba(0,0,0,0.5);">${theme.name}</div>`;
+                option.onclick = () => {
+                    applyTheme(theme);
+                    document.getElementById('themeModal').classList.add('hidden');
+                };
+                grid.appendChild(option);
+            });
+        }
+
+        // Modal handlers
+        document.getElementById('themeBtn').onclick = () => {
+            renderThemeGrid();
+            document.getElementById('themeModal').classList.remove('hidden');
+        };
+
+        document.getElementById('closeThemeModal').onclick = () => {
+            document.getElementById('themeModal').classList.add('hidden');
+        };
+
+        document.getElementById('loginBtn').onclick = () => {
+            document.getElementById('authModal').classList.remove('hidden');
+        };
+
+        document.getElementById('buyCourseBtn').onclick = () => {
+            document.getElementById('authModal').classList.remove('hidden');
+        };
+
+        document.getElementById('closeAuthModal').onclick = () => {
+            document.getElementById('authModal').classList.add('hidden');
+        };
+
+        // Auth form handler
+        document.getElementById('authForm').onsubmit = async(e) => {
+            e.preventDefault();
+
+            if (currentRecordCount >= 999) {
+                showAuthMessage('حداکثر تعداد کاربران ثبت شده! لطفا با پشتیبانی تماس بگیرید.', false);
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitAuthBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ در حال ثبت...';
+
+            const userData = {
+                id: Date.now().toString(),
+                email: document.getElementById('emailInput').value,
+                phone: document.getElementById('phoneInput').value,
+                username: document.getElementById('usernameInput').value,
+                password: document.getElementById('passwordInput').value,
+                registeredAt: new Date().toISOString()
+            };
+
+            const result = await window.dataSdk.create(userData);
+
+            if (result.isOk) {
+                showAuthMessage('✅ ثبت‌نام با موفقیت انجام شد! به زودی با شما تماس می‌گیریم.', true);
+                document.getElementById('authForm').reset();
+                setTimeout(() => {
+                    document.getElementById('authModal').classList.add('hidden');
+                }, 2000);
+            } else {
+                showAuthMessage('❌ خطا در ثبت اطلاعات. لطفا دوباره تلاش کنید.', false);
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = '✅ ثبت‌نام / ورود';
+        };
+
+        function showAuthMessage(message, isSuccess) {
+            const messageDiv = document.getElementById('authMessage');
+            messageDiv.textContent = message;
+            messageDiv.style.background = isSuccess ? 'rgba(0, 255, 0, 0.2)' : 'rgba(255, 0, 0, 0.2)';
+            messageDiv.style.borderColor = isSuccess ? '#00FF00' : '#FF0000';
+            messageDiv.style.border = '2px solid';
+            messageDiv.classList.remove('hidden');
+        }
+
+        // AI Code Generator
+        document.getElementById('generateBtn').onclick = () => {
+            const input = document.getElementById('aiInput').value.trim();
+            if (!input) {
+                return;
+            }
+
+            const btn = document.getElementById('generateBtn');
+            btn.disabled = true;
+            btn.textContent = '⏳ در حال تولید کد...';
+
+            setTimeout(() => {
+                const codeExamples = {
+                    'پورت اسکن': `import socket\n\ndef scan_port(host, port):\n    try:\n        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n        sock.settimeout(1)\n        result = sock.connect_ex((host, port))\n        if result == 0:\n            print(f"Port {port} is open")\n        sock.close()\n    except Exception as e:\n        print(f"Error: {e}")\n\nhost = "192.168.1.1"\nfor port in range(1, 1024):\n    scan_port(host, port)`,
+                    'رمزنگاری': `from cryptography.fernet import Fernet\n\n# تولید کلید\nkey = Fernet.generate_key()\ncipher = Fernet(key)\n\n# رمزنگاری\nmessage = b"پیام محرمانه"\nencrypted = cipher.encrypt(message)\nprint(f"رمزشده: {encrypted}")\n\n# رمزگشایی\ndecrypted = cipher.decrypt(encrypted)\nprint(f"رمزگشایی: {decrypted}")`,
+                    'وب اسکرپ': `import requests\nfrom bs4 import BeautifulSoup\n\nurl = "https://example.com"\nresponse = requests.get(url)\nsoup = BeautifulSoup(response.content, 'html.parser')\n\ntitles = soup.find_all('h2')\nfor title in titles:\n    print(title.text)`,
+                    'default': `# کد پایتون هوشمند بر اساس درخواست شما\n\ndef main():\n    """${input}"""\n    # پیاده‌سازی کد...\n    print("کد آماده اجرا")\n    \nif __name__ == "__main__":\n    main()`
+                };
+
+                let generatedCode = codeExamples.default;
+                for (let keyword in codeExamples) {
+                    if (input.includes(keyword)) {
+                        generatedCode = codeExamples[keyword];
+                        break;
+                    }
+                }
+
+                document.getElementById('generatedCode').textContent = generatedCode;
+                document.getElementById('aiOutput').classList.remove('hidden');
+                btn.disabled = false;
+                btn.textContent = '✨ تولید کد';
+            }, 1500);
+        };
+
+        document.getElementById('copyCodeBtn').onclick = () => {
+            const code = document.getElementById('generatedCode').textContent;
+            navigator.clipboard.writeText(code);
+            const btn = document.getElementById('copyCodeBtn');
+            btn.textContent = '✅ کپی شد!';
+            setTimeout(() => {
+                btn.textContent = '📋 کپی کد';
+            }, 2000);
+        };
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Element SDK Implementation
+        async function onConfigChange(newConfig) {
+            const baseSize = newConfig.font_size || defaultConfig.font_size;
+            const customFont = newConfig.font_family || defaultConfig.font_family;
+            const fontStack = 'Arial, sans-serif';
+
+            // Apply colors
+            document.body.style.background = newConfig.background_color || defaultConfig.background_color;
+            document.body.style.color = newConfig.text_color || defaultConfig.text_color;
+
+            const navbar = document.getElementById('navbar');
+            navbar.style.background = `rgba(${parseInt((newConfig.background_color || defaultConfig.background_color).slice(1, 3), 16)}, ${parseInt((newConfig.background_color || defaultConfig.background_color).slice(3, 5), 16)}, ${parseInt((newConfig.background_color || defaultConfig.background_color).slice(5, 7), 16)}, 0.9)`;
+            navbar.style.borderColor = newConfig.surface_color || defaultConfig.surface_color;
+            navbar.style.color = newConfig.text_color || defaultConfig.text_color;
+
+            // Apply font
+            document.body.style.fontFamily = `${customFont}, ${fontStack}`;
+
+            // Apply font sizes
+            document.getElementById('navTitle').style.fontSize = `${baseSize * 1.5}px`;
+            document.getElementById('heroTitle').style.fontSize = `${baseSize * 3.75}px`;
+            document.getElementById('heroSubtitle').style.fontSize = `${baseSize * 1.5}px`;
+
+            // Apply text content
+            document.getElementById('navTitle').textContent = newConfig.site_title || defaultConfig.site_title;
+            document.getElementById('heroTitle').textContent = newConfig.site_title || defaultConfig.site_title;
+            document.getElementById('heroSubtitle').textContent = newConfig.hero_subtitle || defaultConfig.hero_subtitle;
+            document.getElementById('contactEmail').textContent = newConfig.email_address || defaultConfig.email_address;
+            document.getElementById('contactPhone').textContent = newConfig.phone_number || defaultConfig.phone_number;
+            document.getElementById('contactTelegram').textContent = newConfig.telegram_id || defaultConfig.telegram_id;
+            document.getElementById('courseTitle').textContent = newConfig.course_title || defaultConfig.course_title;
+            document.getElementById('coursePrice').textContent = newConfig.course_price || defaultConfig.course_price;
+
+            // Apply button colors
+            const buttons = document.querySelectorAll('.glow-button');
+            buttons.forEach(btn => {
+                btn.style.background = newConfig.primary_action_color || defaultConfig.primary_action_color;
+                btn.style.color = newConfig.text_color || defaultConfig.text_color;
+                btn.style.borderColor = newConfig.primary_action_color || defaultConfig.primary_action_color;
+            });
+
+            // Apply card colors
+            const cards = document.querySelectorAll('.card-glow');
+            cards.forEach(card => {
+                card.style.background = `rgba(${parseInt((newConfig.background_color || defaultConfig.background_color).slice(1, 3), 16)}, ${parseInt((newConfig.background_color || defaultConfig.background_color).slice(3, 5), 16)}, ${parseInt((newConfig.background_color || defaultConfig.background_color).slice(5, 7), 16)}, 0.5)`;
+                card.style.borderColor = newConfig.surface_color || defaultConfig.surface_color;
+                card.style.border = '1px solid';
+            });
+
+            // Apply matrix text color
+            const matrixTexts = document.querySelectorAll('.matrix-text');
+            matrixTexts.forEach(text => {
+                text.style.color = newConfig.surface_color || defaultConfig.surface_color;
+            });
+
+            // Apply skill bar colors
+            const skillFills = document.querySelectorAll('.skill-fill');
+            skillFills.forEach(fill => {
+                fill.style.background = newConfig.surface_color || defaultConfig.surface_color;
+            });
+
+            // Apply code block colors
+            const codeBlocks = document.querySelectorAll('.code-block');
+            codeBlocks.forEach(block => {
+                block.style.borderColor = newConfig.surface_color || defaultConfig.surface_color;
+                block.style.color = newConfig.text_color || defaultConfig.text_color;
+            });
+
+            // Apply nav links
+            const navLinks = document.querySelectorAll('#navLinks a');
+            navLinks.forEach(link => {
+                link.style.color = newConfig.text_color || defaultConfig.text_color;
+            });
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [{
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            window.elementSdk.setConfig({
+                                background_color: value
+                            });
+                        }
+                    }, {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            config.surface_color = value;
+                            window.elementSdk.setConfig({
+                                surface_color: value
+                            });
+                        }
+                    }, {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            window.elementSdk.setConfig({
+                                text_color: value
+                            });
+                        }
+                    }, {
+                        get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                        set: (value) => {
+                            config.primary_action_color = value;
+                            window.elementSdk.setConfig({
+                                primary_action_color: value
+                            });
+                        }
+                    }, {
+                        get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                        set: (value) => {
+                            config.secondary_action_color = value;
+                            window.elementSdk.setConfig({
+                                secondary_action_color: value
+                            });
+                        }
+                    }],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({
+                                font_family: value
+                            });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({
+                                font_size: value
+                            });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["site_title", config.site_title || defaultConfig.site_title],
+                    ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                    ["email_address", config.email_address || defaultConfig.email_address],
+                    ["phone_number", config.phone_number || defaultConfig.phone_number],
+                    ["telegram_id", config.telegram_id || defaultConfig.telegram_id],
+                    ["course_title", config.course_title || defaultConfig.course_title],
+                    ["course_price", config.course_price || defaultConfig.course_price]
+                ])
+            });
+
+            config = window.elementSdk.config;
+        }
+
+        // Data SDK Implementation
+        const dataHandler = {
+            onDataChanged(data) {
+                currentRecordCount = data.length;
+            }
+        };
+
+        if (window.dataSdk) {
+            window.dataSdk.init(dataHandler).then(result => {
+                if (!result.isOk) {
+                    console.error('Failed to initialize data SDK');
+                }
+            });
+        }
+
+        // Initial render
+        onConfigChange(config);
+    </script>
+    <script>
+        (function() {
+            function c() {
+                var b = a.contentDocument || a.contentWindow.document;
+                if (b) {
+                    var d = b.createElement('script');
+                    d.innerHTML = "window.__CF$cv$params={r:'9ab9b5e8738c0a53',t:'MTc2NTMzNzkxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    b.getElementsByTagName('head')[0].appendChild(d)
+                }
+            }
+            if (document.body) {
+                var a = document.createElement('iframe');
+                a.height = 1;
+                a.width = 1;
+                a.style.position = 'absolute';
+                a.style.top = 0;
+                a.style.left = 0;
+                a.style.border = 'none';
+                a.style.visibility = 'hidden';
+                document.body.appendChild(a);
+                if ('loading' !== document.readyState) c();
+                else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+                else {
+                    var e = document.onreadystatechange || function() {};
+                    document.onreadystatechange = function(b) {
+                        e(b);
+                        'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
